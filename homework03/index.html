@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    console.log(typeof undefined);           
+    console.log(typeof null);                
+    console.log(typeof true);                
+    console.log(typeof 42);                  
+    console.log(typeof 9007199254740991n);   
+    console.log(typeof "Привіт");            
+    console.log(typeof Symbol("id"));        
+    console.log(typeof { name: "Ivan" }); 
+    console.log(typeof [1, 2, 3]);           
+    console.log(typeof function() {}); 
+
+    const str1 = prompt("enter yuor name:");
+    const str2 = prompt("enter yuor last name:");
+    const str3 = prompt("enter yuor email:");
+    console.log(` ${str3}, ${str1}, ${str2}`);
+
+    const number = 10369;
+    const result = number.toString().split('').join(' ');
+    console.log(result);
+    </script>
+</body>
+</html>
