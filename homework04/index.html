@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userName = prompt("Please enter your name:");
+        alert(`Hello, ${userName}! How are you?`);
+
+        const number = prompt("Введіть тризначне число:");
+            if (number && number.length === 3) {
+                const d1 = number[0];
+                const d2 = number[1];
+                const d3 = number[2];
+                const allSame = (d1 === d2 && d2 === d3);
+                const anySame = (d1 === d2 || d2 === d3 || d1 === d3);
+                console.log(`Чи всі цифри однакові? ${allSame}`);
+                console.log(`Чи є серед цифр однакові? ${anySame}`);
+            } else {
+                console.log("Будь ласка, введіть коректне тризначне число.");
+            }
+
+
+        const birthYear = prompt("Введіть ваш рік народження:");
+        const city = prompt("В якому місті ви живете?");
+        const favoriteSport = prompt("Який ваш улюблений вид спорту?");
+
+        let messageParts = {
+            age: "",
+            location: "",
+            sport: ""
+        };
+
+        let cancelledField = null;
+
+        if (birthYear === null) {
+            cancelledField = "дату народження";
+        } else {
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - parseInt(birthYear);
+            messageParts.age = `Ваш вік: ${age}.`;
+        }
+
+        if (!cancelledField) {
+            if (city === null) {
+                cancelledField = "місто";
+            } else {
+                const cityLower = city.trim().toLowerCase();
+                switch (cityLower) {
+                    case "київ":
+                        messageParts.location = "Ти живеш у столиці України.";
+                        break;
+                    case "вашингтон":
+                        messageParts.location = "Ти живеш у столиці США.";
+                        break;
+                    case "лондон":
+                        messageParts.location = "Ти живеш у столиці Великої Британії.";
+                        break;
+                    default:
+                        messageParts.location = `Ти живеш у місті ${city}.`;
+                }
+            }
+        }
+
+        if (!cancelledField) {
+            if (favoriteSport === null) {
+                cancelledField = "вид спорту";
+            } else {
+                const sportLower = favoriteSport.trim().toLowerCase();
+                const champions = {
+                    "футбол": "Ліонель Мессі",
+                    "бокс": "Олександр Усик",
+                    "формула-1": "Макс Ферстаппен"
+                };
+
+                if (champions[sportLower]) {
+                    messageParts.sport = `Круто! Хочеш стати як ${champions[sportLower]}?`;
+                } else {
+                    messageParts.sport = `Твій улюблений спорт — ${favoriteSport}.`;
+                }
+            }
+        }
+
+        if (cancelledField) {
+            alert(`Шкода, що Ви не захотіли ввести свій(ю) ${cancelledField}.`);
+        } else {
+            const finalMessage = `${messageParts.age}\n${messageParts.location}\n${messageParts.sport}`;
+            alert(finalMessage);
+        }
+
+        let numOrStr = prompt('input number or string');
+            console.log(numOrStr);
+
+        switch (true) {
+            case numOrStr === null:
+                console.log('ви скасували');
+                break;
+            case numOrStr.trim() === '':
+                console.log('Empty String');
+                break;
+            case isNaN(+numOrStr):
+                console.log('number is Ba_NaN');
+                break;
+            default:
+                console.log('OK!');
+        }
+
+
+    </script>
+</body>
+</html>
