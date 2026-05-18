@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let result = [];
+         for (let i = 20; i <= 30; i += 0.5) {
+        result.push(i);
+        }
+
+        for (let usd = 10; usd <= 100; usd += 10) {
+        let uah = usd * 26;
+        console.log(`${usd} доларів = ${uah} гривень`);
+        }
+
+        const N = parseInt(prompt("Введіть ціле число N:"));
+
+        for (let i = 1; i <= 100; i++) {
+            if (i * i <= N) {
+                console.log(i);
+            } else {
+                break; 
+            }
+        }
+
+
+        const number = parseInt(prompt("Введіть ціле число:"));
+            let isPrime = number > 1; 
+
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    isPrime = false;
+                    break; 
+                }
+            }
+
+            if (isPrime) {
+                console.log(`${number} — це просте число`);
+            } else {
+                console.log(`${number} — це не просте число`);
+            }
+
+    </script>
+</body>
+</html>
