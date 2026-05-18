@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const user = {
+    firstName: "Олександр",
+    age: 28,
+    city: "Київ",
+    occupation: "Веб-розробник",
+
+    displayInfo: function() {
+        console.log(`Ім'я: ${this.firstName}`);
+        console.log(`Вік: ${this.age} років`);
+        console.log(`Місце проживання: ${this.city}`);
+        console.log(`Професія: ${this.occupation}`);
+    }
+    };
+    user.displayInfo();
+
+
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const evenNumbers = numbers.filter(function(number) {
+        return number % 2 === 0;
+    });
+    console.log(evenNumbers); // Виведе: [2, 4, 6, 8, 10]
+
+
+    const contactBook = {
+        contacts: [
+            { name: "Андрій", phone: "+380671112233", email: "andriy@email.com" },
+            { name: "Марія", phone: "+380504445566", email: "mariya@email.com" }
+        ],
+        addContact: function(name, phone, email) {
+            const newContact = { name, phone, email };
+            this.contacts.push(newContact);
+            console.log(`Контакт "${name}" успішно додано.`);
+        },
+        findContact: function(nameToFind) {
+            const found = this.contacts.find(contact => 
+                contact.name.toLowerCase() === nameToFind.toLowerCase()
+            );
+            
+            if (found) {
+                return found;
+            } else {
+                return `Контакт з ім'ям "${nameToFind}" не знайдено.`;
+            }
+        }
+    };
+    contactBook.addContact("Олена", "+380637778899", "olena@email.com");
+    console.log(contactBook.findContact("Марія")); 
+    console.log(contactBook.findContact("Іван")); 
+
+
+    </script>
+</body>
+</html>
