@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createSum() {
+        let total = 0; 
+        return function(num) {
+            total += num;
+            return total;
+        };
+        }
+        const sum = createSum();
+
+        console.log(sum(4)); 
+        console.log(sum(6));  
+        console.log(sum(10)); 
+        console.log(sum(7));  
+
+
+        function multiply(x) {
+        return function(y) {
+            return x * y;
+        };
+        }
+        const result = multiply(5)(2);
+        console.log(result); 
+
+
+        function askForNumber() {
+        let lastInput = null;
+
+        for (let i = 0; i < 10; i++) {
+            const input = prompt(`Ітерація ${i + 1}/10. Введіть число більше 100:`);
+            if (input === null) {
+            break; 
+            }
+            const number = Number(input);
+            if (!isNaN(input) && input.trim() !== '') {
+            lastInput = number;
+            } else {
+            lastInput = input; 
+            }
+            if (!isNaN(input) && input.trim() !== '' && number > 100) {
+            break;
+            }
+        }
+        console.log("Останнє введення користувача:", lastInput);
+        }
+        askForNumber();
+
+
+
+
+
+    </script>
+</body>
+</html>
