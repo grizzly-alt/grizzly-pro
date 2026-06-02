@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumSalaries(department) {
+             if (Array.isArray(department)) {
+            return department.reduce((sum, employee) => sum + employee.salary, 0);
+        }
+        return Object.values(department)
+            .reduce((sum, subdep) => sum + sumSalaries(subdep), 0);
+        }
+        console.log(sumSalaries(company)); 
+
+
+    </script>
+</body>
+</html>
