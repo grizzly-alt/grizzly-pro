@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Зміна кольору тексту</title>
+    <style>
+        .text-block {
+            font-family: sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+            transition: color 0.3s ease; /* Плавна зміна кольору */
+        }
+        /* Клас для нового кольору */
+        .text-highlight {
+            color: #e74c3c; /* Червоний колір */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="text" class="text-block">Цей текст змінюватиме свій колір при натисканні на кнопку.</p>
+    <button id="color-button">Змінити колір</button>
+
+    <script>
+        const textElement = document.getElementById('text');
+        const buttonElement = document.getElementById('color-button');
+
+        buttonElement.addEventListener('click', () => {
+            textElement.classList.toggle('text-highlight');
+        });
+    </script>
+</body>
+</html>

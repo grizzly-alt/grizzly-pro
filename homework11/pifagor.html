@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблиця Піфагора</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        td, th {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:first-child th, td:first-child {
+            background-color: #e6e6e6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="table-container"></div>
+
+    <script>
+        function generatePythagorasTable(size) {
+            const container = document.getElementById('table-container');
+            const table = document.createElement('table');
+
+            for (let i = 1; i <= size; i++) {
+                const row = document.createElement('tr');
+                
+                for (let j = 1; j <= size; j++) {
+                    const cell = (i === 1 || j === 1) ? document.createElement('th') : document.createElement('td');
+                    cell.textContent = i * j;
+                    row.appendChild(cell);
+                }
+                
+                table.appendChild(row);
+            }
+            
+            container.appendChild(table);
+        }
+        generatePythagorasTable(10);
+    </script>
+</body>
+</html>
+
+</body>
+</html>
