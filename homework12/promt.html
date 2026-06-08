@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Переход на сторінку</title>
+</head>
+<body>
+    <button onclick="getLink()">Ввести посилання</button>
+    <button onclick="goToLink()">Перейти за посиланням</button>
+
+    <script>
+    let userLink = "";
+    function getLink() {
+        userLink = prompt("Будь ласка, введіть посилання (наприклад, https://google.com):");
+    }
+
+    function goToLink() {
+        if (userLink) {
+        window.location.href = userLink;
+        } else {
+        alert("Спочатку потрібно ввести посилання!");
+        }
+    }
+    </script>
+
+</body>
+</html>

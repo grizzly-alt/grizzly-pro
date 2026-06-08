@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Делегування подій</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        #container {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button data-name="кнопка 1">Кнопка 1</button>
+        <button data-name="кнопка 2">Кнопка 2</button>
+        <button data-name="кнопка 3">Кнопка 3</button>
+    </div>
+
+    <div id="output">Натисніть будь-яку кнопку...</div>
+
+    <script>
+        const container = document.getElementById('container');
+        const output = document.getElementById('output');
+
+        container.addEventListener('click', function(event) {
+
+            if (event.target.tagName === 'BUTTON') {
+                const buttonName = event.target.getAttribute('data-name');
+                output.textContent = `Ви клікнули на: ${buttonName}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
