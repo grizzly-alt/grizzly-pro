@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form Validation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      color: #ff4d6d;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #9aa5b1;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #e4e7eb;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+      color: #334e68;
+      background-color: #fafbfc;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]::placeholder, textarea::placeholder {
+      color: #9aa5b1;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: #38a169;
+    }
+
+    textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      background-color: #1890ff;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #096dd9;
+    }
+
+    .error {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>We would like to help you</h2>
+  
+  <form id="contactForm">
+    <!-- Поле Name -->
+    <div class="form-group">
+      <input type="text" id="name" placeholder="Name">
+      <span id="nameError" class="error"></span>
+    </div>
+
+    <div class="form-group">
+      <textarea id="message" placeholder="Message"></textarea>
+      <span id="messageError" class="error"></span>
+    </div>
+
+    <p class="subtitle">HOW TO ANSWER YOU?</p>
+
+    <div class="form-group">
+      <input type="text" id="phone" placeholder="Phone number">
+      <span id="phoneError" class="error"></span>
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="email" placeholder="Email">
+      <span id="emailError" class="error"></span>
+    </div>
+
+    <button type="submit">Send message</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById('name');
+    const messageInput = document.getElementById('message');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+
+    const nameError = document.getElementById('nameError');
+    const messageError = document.getElementById('messageError');
+    const phoneError = document.getElementById('phoneError');
+    const emailError = document.getElementById('emailError');
+
+    nameError.textContent = '';
+    messageError.textContent = '';
+    phoneError.textContent = '';
+    emailError.textContent = '';
+
+    let isValid = true;
+
+    if (nameInput.value.trim() === '') {
+      nameError.textContent = 'Поле Name обязательно для заполнения';
+      isValid = false;
+    }
+
+    if (messageInput.value.trim().length < 5) {
+      messageError.textContent = 'Сообщение должно содержать не менее 5 символов';
+      isValid = false;
+    }
+
+    const phoneRegex = /^\+380\d{9}$/;
+    if (!phoneRegex.test(phoneInput.value.trim())) {
+      phoneError.textContent = 'Номер должен начинаться с +380 и содержать всего 12 цифр';
+      isValid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+      emailError.textContent = 'Введите корректный email (должен содержать @ и точку)';
+      isValid = false;
+    }
+
+    if (isValid) {
+      const userData = {
+        name: nameInput.value.trim(),
+        message: messageInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        email: emailInput.value.trim()
+      };
+
+      console.log('Пользователь ввел корректные данные:', userData);
+
+      document.getElementById('contactForm').reset();
+    }
+  });
+</script>
+
+</body>
+</html>
