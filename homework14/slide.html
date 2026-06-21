@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Слайдер</title>
+  <style>
+    .slider-container {
+      position: relative;
+      max-width: 800px;
+      margin: 50px auto;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #007bff;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+
+    .dots-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 6px;
+      background-color: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .dot.active {
+      background-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <button class="slider-btn prev-btn" id="prevBtn">&lt;</button>
+
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide"><img src="img/aleksandr.png" alt="Слайд 1"></div>
+      <div class="slide"><img src="img/we.png" alt="Слайд 2"></div>
+      <div class="slide"><img src="img/weus.png" alt="Слайд 3"></div>
+      <div class="slide"><img src="img/Untitled (1).png" alt="Слайд 4"></div>
+    </div>
+
+    <button class="slider-btn next-btn" id="nextBtn">&gt;</button>
+
+    <div class="dots-container" id="dotsContainer"></div>
+  </div>
+
+  <script>
+    const track = document.getElementById('sliderTrack');
+    const slides = Array.from(track.children);
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    let currentIndex = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active'); 
+      
+      dot.addEventListener('click', () => moveToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+
+      prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+      nextBtn.style.display = currentIndex === slides.length - 1 ? 'none' : 'flex';
+    }
+
+    function moveToSlide(index) {
+      currentIndex = index;
+      updateSlider();
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    updateSlider();
+  </script>
+
+</body>
+</html>
+
