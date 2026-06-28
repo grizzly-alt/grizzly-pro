@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.balance-label {
+    font-size: 14px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: #4f46e5;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-deposit {
+    background-color: #10b981;
+    color: white;
+}
+
+.btn-deposit:hover {
+    background-color: #059669;
+}
+
+.btn-withdraw {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-withdraw:hover {
+    background-color: #dc2626;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 14px;
+    min-height: 20px;
+    font-weight: 500;
+}
+
+.error { color: #ef4444; }
+.success { color: #10b981; }

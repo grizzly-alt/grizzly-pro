@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій Банківський Рахунок</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="card">
+        <h2>Bank App</h2>
+        <div class="balance-card">
+            <div class="balance-label">Поточний баланс</div>
+            <div class="balance-amount"><span id="balance-value">1000</span> ₴</div>
+        </div>
+        <div class="input-group">
+            <input type="number" id="amount-input" placeholder="Введіть суму" min="1">
+        </div>
+        <div class="btn-group">
+            <button class="btn-deposit" onclick="handleDeposit()">Поповнити</button>
+            <button class="btn-withdraw" onclick="handleWithdraw()">Зняти</button>
+        </div>
+
+        <div id="msg" class="message"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
