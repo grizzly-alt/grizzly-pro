@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+#timer {
+  font-size: 72px;
+  color: #000000;
+  font-variant-numeric: tabular-nums; /* Запобігає смиканню цифр при зміні */
+}
