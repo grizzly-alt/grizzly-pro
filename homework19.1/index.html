@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виджет погоды</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="weather-widget">
+        <div class="widget-header">
+
+            <button id="refresh-btn" title="Обновить данные">&#x21BB;</button>
+        </div>
+        
+        <div class="widget-body">
+            <div class="temp-container">
+                <span id="temperature">--</span><span class="unit">°C</span>
+            </div>
+            <div class="info-container">
+                <img id="weather-icon" src="" alt="Погода" style="display:none;">
+                <p id="description">Получение данных...</p>
+            </div>
+        </div>
+
+        <div class="widget-footer">
+            <div class="detail-item">
+                <span class="label">Влажность:</span>
+                <span id="humidity">--</span>%
+            </div>
+            <div class="detail-item">
+                <span class="label">Ветер:</span>
+                <span id="wind">--</span> м/с
+            </div>
+            <div class="detail-item">
+                <span class="label">Давление:</span>
+                <span id="pressure">--</span> гПа
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
