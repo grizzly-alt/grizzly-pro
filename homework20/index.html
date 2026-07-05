@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List з модальним вікном</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .list-group-item-action {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        
+        <h1 class="text-center mb-4">Мій ToDo List</h1>
+
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="taskTitleInput" class="form-label">Назва завдання</label>
+              <input type="text" id="taskTitleInput" class="form-control" placeholder="Наприклад: Купити продукти">
+            </div>
+            <div class="mb-3">
+              <label for="taskTextInput" class="form-label">Детальний текст завдання</label>
+              <textarea id="taskTextInput" class="form-control" rows="3" placeholder="Молоко, хліб, сир..."></textarea>
+            </div>
+            <button id="addTaskBtn" class="btn btn-primary w-100">Додати завдання</button>
+          </div>
+        </div>
+
+        <ul id="todo-list" class="list-group shadow-sm">
+          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+              data-task-title="Завдання №1" 
+              data-task-text="Це повний текст першого завдання, який ви бачите у модальному вікні.">
+            <span>Завдання №1 (натисніть для перегляду)</span>
+            <button class="btn btn-danger btn-sm delete-btn">&times;</button>
+          </li>
+          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+              data-task-title="Завдання №2" 
+              data-task-text="Тут знаходиться детальний опис другого завдання з вашого списку.">
+            <span>Завдання №2 (натисніть для перегляду)</span>
+            <button class="btn btn-danger btn-sm delete-btn">&times;</button>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskModalLabel">Ваше завдання</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="modalTaskText" class="text-muted">Текст завдання</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://jquery.com"></script>
+  <script src="https://jsdelivr.net"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#todo-list').on('click', '.list-group-item', function(e) {
+        if ($(e-target).hasClass('delete-btn')) return;
+
+        const title = $(this).data('task-title');
+        const text = $(this).data('task-text');
+
+        $('#taskModalLabel').text(title);
+        $('#modalTaskText').text(text);
+
+        const myModal = new bootstrap.Modal(document.getElementById('taskModal'));
+        myModal.show();
+      });
+
+      $('#addTaskBtn').on('click', function() {
+        const title = $('#taskTitleInput').val().trim();
+        const text = $('#taskTextInput').val().trim();
+
+        if (title === '' || text === '') {
+          alert('Будь ласка, заповніть обидва поля!');
+          return;
+        }
+        const newListItem = `
+          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+              data-task-title="${title}" 
+              data-task-text="${text}">
+            <span>${title} (натисніть для перегляду)</span>
+            <button class="btn btn-danger btn-sm delete-btn">&times;</button>
+          </li>
+        `;
+
+        $('#todo-list').append(newListItem);
+
+        $('#taskTitleInput').val('');
+        $('#taskTextInput').val('');
+      });
+
+      $('#todo-list').on('click', '.delete-btn', function() {
+        $(this).closest('.list-group-item').fadeOut(300, function() {
+          $(this).remove();
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
